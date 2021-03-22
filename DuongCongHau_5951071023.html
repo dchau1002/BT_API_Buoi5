@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>DuongCongHau_5951071023</title>
+    <style>
+        .highlight {
+            font-size: 15px;
+            color: rgba(0, 255, 115, 0.671);
+            font-family: 'Calibri';
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p id="noidung"></p>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        axios.get('https://graph.facebook.com/utc2hcmc/posts?access_token=EAAAAZAw4FxQIBAJYJjV2eKVzYZBl2wNnlJ27ww0Kh2dNr1zgw51UnG53YRRO5b6ZAsmloR1PpaXNCIMIRiD0JZA67IUmdZCChYdncF8qppEEKtu8TVPG83GBvz175bTsqadRFbAkzTU1phiZCQjelpfFZBB4B0fijTx3YfhyttWIwZDZD')
+            .then(response => {
+                var noidung = "";
+                noidung += " <span class='highlight'><center>Thông tin bài viết thứ I</center></span>" +
+                    response.data.data[0].message + "<br /> <br />" +
+                    "<span class='highlight'><center>Thông tin bài viết thứ II</center></span>" +
+                    response.data.data[1].message + "<br /> <br />" +
+                    "<span class='highlight'><center>Thông tin bài viết thứ III</center></span>" +
+                    response.data.data[2].message;
+
+                document.getElementById('noidung').innerHTML = noidung;
+            })
+            .catch(error => console.error(error));
+    </script>
+</body>
+</html>
